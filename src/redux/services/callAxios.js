@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setCookie, removeCookie, getCookie } from "../../util/session";
 let axiosRequest = axios.create({
-  baseURL: "",
+  baseURL: "https://taskfrontendapi.azurewebsites.net/api/",
   responseType: "json"
 });
 
@@ -12,12 +12,14 @@ let callAxios = options => {
       if (!response.data) {
         resolve({ data: { message: response.message } });
       } else {
+        // console.log("response.data ",response.data)
         if (response.data.token) {
           setCookie("access_token", response.data.token);
+
           options.headers.Authorization = "Bearer " + response.data.token;
           response = await axiosRequest(options);
           resolve(response);
-          // }
+
         } else if (response.data.message) {
           if (response.data.message == "unauthorized") {
             console.log("**********Authorization*********");
