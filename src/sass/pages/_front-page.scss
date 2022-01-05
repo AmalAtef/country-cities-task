@@ -1,0 +1,239 @@
+.intro-bg {
+  //background-image: url("https://cdn.catholic.com/wp-content/uploads/AdobeStock_135906090-900x900.jpeg");
+  background-image: url("http://localhost:3000/static/images/backgrounds/Signup_page_header_pc-01.svg"),
+    url("http://localhost:3000/static/images/backgrounds/background-img.jpg");
+
+  background-position: left, center top;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100%, cover;
+  width: 100%;
+  height: 100%;
+  @media screen and (max-width: 575px) {
+    background-image: url("http://localhost:3000/static/images/backgrounds/Signup_page_header_Mobile.svg"),
+      url("http://localhost:3000/static/images/backgrounds/background-img.jpg");
+    background-position: left top, center top;
+  }
+}
+
+.bg-layout {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow: auto;
+}
+img {
+  width: 100%;
+}
+
+///message icon
+.line-message-border {
+  fill: rgba(211, 49, 110, 1);
+  stroke: rgba(255, 255, 255, 1);
+}
+.line-message3-line1 {
+  animation: line-message3-line 2s 600ms 2;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 160;
+  stroke: rgba(255, 255, 255, 1);
+}
+.line-message3-line2 {
+  animation: line-message3-line 2s 300ms 2;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 160;
+  stroke: rgba(255, 255, 255, 1);
+}
+.line-message3-line3 {
+  animation: line-message3-line 2s 2;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 160;
+  stroke: rgba(255, 255, 255, 1);
+}
+@keyframes line-message3-line {
+  0% {
+    stroke-dashoffset: 160;
+  }
+  20% {
+    stroke-dashoffset: 160;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 150;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .line-message3-line1,
+  .line-message3-line2,
+  .line-message3-line3 {
+    animation: none;
+  }
+}
+
+/// Love icon
+.line-heart1 {
+  fill: rgba(255, 255, 255, 1);
+  stroke: rgba(232, 120, 162, 1);
+  animation: line-heart1-pulse 2s 2;
+  transform-origin: 50px 50px;
+}
+@keyframes line-heart1-pulse {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  35% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  75% {
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .line-heart1 {
+    animation: none;
+  }
+}
+
+// view
+.svgDraw-path {
+  fill: transparent;
+  stroke-width: 10;
+  stroke: #e878a2;
+  stroke-dasharray: 1350;
+  stroke-dashoffset: 1350;
+  animation: animate-view 3s linear forwards 2;
+}
+@keyframes animate-view {
+  0% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+    transform: scale3d(1, 1, 1);
+  }
+  40% {
+    stroke-dashoffset: 1350;
+    fill: #d3316e;
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  70% {
+    stroke-dashoffset: 2700;
+    fill: #d3316e;
+  }
+  100% {
+    stroke-dashoffset: 2700;
+    fill: #d3316e;
+  }
+}
+
+.MuiTypography-colorPrimary {
+  color: $secondary !important;
+}
+.MuiButton-containedPrimary {
+  background-color: $secondary !important;
+}
+
+.btn-lang {
+  text-align: end;
+}
+
+.btn-lang button {
+  background-color: $secondary;
+  color: white;
+  margin: 2rem;
+  @media screen and (max-width: 575px) {
+    margin: 1rem;
+  }
+}
+
+.btn-lang button:hover {
+  color: gray;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: $secondary !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: $secondary !important;
+}
+
+.btn-1 {
+  background-color: $secondary !important;
+  color: white !important;
+  margin: 1.5rem !important;
+}
+
+.div-container {
+  padding: 6rem 1.5rem;
+}
+
+.MuiSvgIcon-colorSecondary {
+  color: $secondary !important;
+}
+.MuiButton-containedSecondary {
+  background-color: $secondary !important;
+}
+
+.MuiMenu-paper {
+  width: auto !important;
+}
+
+.colorG {
+  background-color: green !important;
+  color: white !important;
+}
+
+.colorR {
+  background-color: #e21010 !important;
+  color: white !important;
+}
+
+.rec-item-wrapper {
+  padding: 0.5rem !important;
+}
+
+.lcUbOd:hover {
+  box-shadow: 0 0 1px 3px $secondary !important;
+}
+
+.lcUbOd {
+  background-color: $secondary !important;
+  box-shadow: 0 0 1px 3px $secondary !important;
+}
+
+.jRFJkP:hover:enabled,
+.jRFJkP:focus:enabled {
+  background-color: $secondary !important;
+}
+
+.icon-done {
+  color: green !important;
+  font-size: 2.5rem !important;
+}
+
+.MuiGridPanel-root .icon-report {
+  display: none;
+}
+.MuiGridPanel-root .icons-conrainer-1::after {
+  content: "Reported Profile";
+}
+.MuiGridPanel-root .icons-conrainer-2::after {
+  content: "Reported Conversation";
+}
