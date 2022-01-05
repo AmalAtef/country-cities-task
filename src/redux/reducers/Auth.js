@@ -1,7 +1,8 @@
 import {
   USER_LOGIN_SUCCESS,
   SHOW_MESSAGE,
-  HIDE_MESSAGE
+  HIDE_MESSAGE,
+  USER_LOGOUT
 } from "../ActionTypes";
 const initialAuthState = {
   authUser: null,
@@ -27,6 +28,13 @@ const auth = (state = initialAuthState, action) => {
         alertMessage: action.payload,
         showMessage: true,
         loader: false
+      };
+    }
+    case USER_LOGOUT:{
+      return {
+        ...state,
+        authUser: null,
+        isLogin: false,
       };
     }
     case HIDE_MESSAGE: {

@@ -2,7 +2,8 @@ import {
   USER_LOGIN,
   USER_LOGIN_SUCCESS,
   SHOW_MESSAGE,
-  HIDE_MESSAGE
+  HIDE_MESSAGE,
+  USER_LOGOUT
 } from "../ActionTypes";
 
 export const login = (email, password) => {
@@ -23,6 +24,13 @@ export const loginSuccess = (returnedData) => {
     payload: returnedData 
   };
 };
+
+export const logout = () => {
+  return {
+    type:USER_LOGOUT
+  };
+};
+
 
 
 export const showAuthMessage = message => {
