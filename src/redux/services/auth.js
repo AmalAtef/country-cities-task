@@ -27,7 +27,6 @@ auth.login = function(Email, Password) {
         let res = resX.data;
 
         if (res) {
-          console.log("res from service ",res)
           if (res.token) {
             let tokenUserData = JSON.parse(
               base64url.decode(`${res.token}`.split(".")[1])

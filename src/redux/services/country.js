@@ -4,7 +4,6 @@ import { getCookie } from "../../util/session";
 const country = {};
 
 country.getAllCountries = function() {
-  console.log("service getAll Countries")
   return new Promise(async (resolve, reject) => {
     
       try {
@@ -22,7 +21,6 @@ country.getAllCountries = function() {
 
         let res = resX.data;
 
-        console.log("res getAllCountries from service ",res)
         if (res) {
             resolve(res);
           } else {
@@ -40,7 +38,7 @@ country.getAllCountries = function() {
 
 
 country.getCountryById = function(id) {
-  console.log("service getCountryById ",id)
+ 
   return new Promise(async (resolve, reject) => {
     
       try {
@@ -58,7 +56,6 @@ country.getCountryById = function(id) {
 
         let res = resX.data;
 
-        console.log("res getCountryById from service ",res)
         if (res) {
             resolve(res);
           } else {
@@ -75,7 +72,7 @@ country.getCountryById = function(id) {
 };
 
 country.addCountry = function(Name) {
-  console.log("service addCountry ",Name)
+ 
   return new Promise(async (resolve, reject) => {
     
       try {
@@ -96,7 +93,6 @@ country.addCountry = function(Name) {
 
         let res = resX.data;
 
-        console.log("res addCountry from service ",res)
         if (res) {
             resolve(res);
           } else {
@@ -113,7 +109,7 @@ country.addCountry = function(Name) {
 };
 
 country.editCountry = function(Id,Name) {
-  console.log("service editCountry ",Id,Name)
+ 
   return new Promise(async (resolve, reject) => {
     
       try {
@@ -132,7 +128,6 @@ country.editCountry = function(Id,Name) {
 
         let res = resX.data;
 
-        console.log("res editCountry from service ",res)
         if (res) {
             resolve(res);
           } else {
@@ -149,7 +144,7 @@ country.editCountry = function(Id,Name) {
 };
 
 country.deleteCountry = function(id) {
-  console.log("service deleteCountry ",id)
+
   return new Promise(async (resolve, reject) => {
     
       try {
@@ -167,7 +162,6 @@ country.deleteCountry = function(id) {
 
         let res = resX.data;
 
-        console.log("res deleteCountry from service ",res)
         if (res) {
             resolve(res);
           } else {

@@ -65,7 +65,6 @@ const LoginForm = () => {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const authUser = useSelector(state => state.auth.authUser);
   
 
   const showMessage = useSelector(state => state.auth.showMessage);

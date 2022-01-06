@@ -4,7 +4,6 @@ import { getCookie } from "../../util/session";
 const city = {};
 
  city.getAllCities = function() {
-    console.log("service getAll cities")
     return new Promise(async (resolve, reject) => {
       
         try {
@@ -22,7 +21,6 @@ const city = {};
   
           let res = resX.data;
   
-          console.log("res get all cities from service ",res)
           if (res) {
               resolve(res);
             } else {
@@ -40,7 +38,6 @@ const city = {};
   
   
 city.getCityById = function(id) {
-    console.log("service getCityById ",id)
     return new Promise(async (resolve, reject) => {
       
         try {
@@ -58,7 +55,6 @@ city.getCityById = function(id) {
   
           let res = resX.data;
   
-          console.log("res getCityById from service ",res)
           if (res) {
               resolve(res);
             } else {
@@ -75,7 +71,6 @@ city.getCityById = function(id) {
 };
   
 city.getCitiesOfCountry = function(id) {
-    console.log("service getCitiesOfCountry ",id)
     return new Promise(async (resolve, reject) => {
       
         try {
@@ -93,7 +88,6 @@ city.getCitiesOfCountry = function(id) {
   
           let res = resX.data;
   
-          console.log("res getCitiesOfCountry from service ",res)
           if (res) {
               resolve(res);
             } else {
@@ -110,7 +104,6 @@ city.getCitiesOfCountry = function(id) {
 };
 
 city.addCity = function(Name,CountryId) {
-    console.log("service addCity ",Name)
     return new Promise(async (resolve, reject) => {
       
         try {
@@ -131,7 +124,6 @@ city.addCity = function(Name,CountryId) {
   
           let res = resX.data;
   
-          console.log("res addCity from service ",res)
           if (res) {
               resolve(res);
             } else {
@@ -148,7 +140,6 @@ city.addCity = function(Name,CountryId) {
   };
   
 city.editCity = function(Id,Name,CountryId) {
-    console.log("service editCity ",Id,Name,CountryId)
     return new Promise(async (resolve, reject) => {
       
         try {
@@ -166,8 +157,7 @@ city.editCity = function(Id,Name,CountryId) {
           let resX = await callAxios(options);
   
           let res = resX.data;
-  
-          console.log("res editCity from service ",res)
+
           if (res) {
               resolve(res);
             } else {
@@ -184,7 +174,6 @@ city.editCity = function(Id,Name,CountryId) {
   };
   
   city.deleteCity = function(id) {
-    console.log("service deleteCity ",id)
     return new Promise(async (resolve, reject) => {
       
         try {
@@ -201,8 +190,7 @@ city.editCity = function(Id,Name,CountryId) {
           let resX = await callAxios(options);
   
           let res = resX.data;
-  
-          console.log("res deleteCity from service ",res)
+
           if (res) {
               resolve(res);
             } else {

@@ -15,14 +15,12 @@ import {
 
 ///GET ALL
 export const getAllCountries = () => {
-    console.log("get all countries action ")
     return {
       type: GET_ALL_COUNTRIES
     };
   };
   
   export const getAllCountriesSuccess = (returnedData) => {
-    console.log("getAllCountries from action success ",returnedData)
     return {
       type: GET_ALL_COUNTRIES_SUCCESS,
       payload: returnedData 
@@ -31,7 +29,6 @@ export const getAllCountries = () => {
 
 ////GET BY ID
   export const getCountryById = (countryId) => {
-    console.log("getCountryById action ",countryId)
     return {
       type: GET_COUNTRY_BY_ID,
       payload: countryId 
@@ -39,7 +36,6 @@ export const getAllCountries = () => {
   };
   
   export const getCountryByIdSuccess = (returnedData) => {
-    console.log("getCountryById from action success ",returnedData)
     return {
       type: GET_COUNTRY_BY_ID_SUCCESS,
       payload: returnedData 
@@ -48,7 +44,6 @@ export const getAllCountries = () => {
 
   //// ADD 
   export const addCountry = (countryName) => {
-    console.log("addCountry action ",countryName)
     return {
       type: ADD_COUNTRY,
       payload: countryName 
@@ -56,7 +51,6 @@ export const getAllCountries = () => {
   };
   
   export const addCountrySuccess = (returnedData) => {
-    console.log("addCountry from action success ",returnedData)
     return {
       type: ADD_COUNTRY_SUCCESS,
       payload: returnedData 
@@ -65,7 +59,6 @@ export const getAllCountries = () => {
 
   /// EDIT
   export const editCountry = (countryId,countryNewName) => {
-    console.log("editCountry action ",countryId,countryNewName)
     return {
       type: EDIT_COUNTRY,
       payload: {countryId,countryNewName}
@@ -73,7 +66,6 @@ export const getAllCountries = () => {
   };
   
   export const editCountrySuccess = (returnedData) => {
-    console.log("editCountry from action success ",returnedData)
     return {
       type: EDIT_COUNTRY_SUCCESS,
       payload: returnedData 
@@ -82,7 +74,6 @@ export const getAllCountries = () => {
 
   //DELETE
   export const deleteCountry = (countryId) => {
-    console.log("deleteCountry action ",countryId)
     return {
       type: DELETE_COUNTRY,
       payload: countryId 
@@ -90,7 +81,6 @@ export const getAllCountries = () => {
   };
   
   export const deleteCountrySuccess = (returnedData) => {
-    console.log("deleteCountry from action success ",returnedData)
     return {
       type: DELETE_COUNTRY_SUCCESS,
       payload: returnedData 

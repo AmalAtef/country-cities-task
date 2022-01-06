@@ -63,7 +63,6 @@ const deleteCityRequest = async (cityId) =>
 
 ///////////////
 function* requestGetAllCities() {
-  console.log("requestGetAllCities from saga ")
 
   try {
     const returnedData = yield call(getAllCitiesRequest);
@@ -78,7 +77,6 @@ function* requestGetAllCities() {
 }
 
 function* requestGetCityById({ payload }) {
-  console.log("requestGetCityById from saga ",payload)
   try {
     const returnedData = yield call(getCityByIdRequest,payload);
     if (returnedData.message) {
@@ -92,7 +90,6 @@ function* requestGetCityById({ payload }) {
 }
 
 function* requestGetCitiesofCountry({ payload }) {
-  console.log("requestGetCitiesofCountry from saga ",payload)
   try {
     const returnedData = yield call(getCitiesOfCountryRequest,payload);
     if (returnedData.message) {
@@ -107,7 +104,6 @@ function* requestGetCitiesofCountry({ payload }) {
 
 
 function* requestAddCity({ payload }) {
-  console.log("requestAddCity from saga ",payload)
   const {cityName,countryId}=payload
   try {
     const returnedData = yield call(addCityRequest,cityName,countryId);
@@ -122,7 +118,6 @@ function* requestAddCity({ payload }) {
 }
 
 function* requestEditCity({ payload }) {
-  console.log("requestEditCity from saga ",payload)
   const {cityId,cityNewName,countryId}=payload
   try {
     const returnedData = yield call(editCityRequest,cityId,cityNewName,countryId);
@@ -137,7 +132,6 @@ function* requestEditCity({ payload }) {
 }
 
 function* requestDeleteCity({ payload }) {
-  console.log("requestDeleteCity from saga ",payload)
   try {
     const returnedData = yield call(deleteCityRequest,payload);
     if (returnedData.message) {

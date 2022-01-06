@@ -17,24 +17,11 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Grid from "@material-ui/core/Grid";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 
 import { getCookie } from "../util/session";
 import base64url from "base64url";
 
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-
-import Fade from "@material-ui/core/Fade";
-
-
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-
-import Login from "../pages/login";
-import Country from "../pages/country";
-import City from "../pages/city";
 
 import {
   logout
@@ -45,12 +32,6 @@ import {
   NotificationManager
 } from "react-notifications";
 
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -107,19 +88,6 @@ const Header = props => {
   const handleMenu = event => {
     setAnchor(event.currentTarget);
   };
-
-  const [tokenUserData, setTokenUserData] = useState(null);
-
-  useEffect(() => {
-    const tokenValue = getCookie("access_token", false);
-    if (tokenValue != undefined) {
-      setTokenUserData(
-        JSON.parse(base64url.decode(`${tokenValue}`.split(".")[1]))
-      );
-    }
-  }, []);
-
-  const [anchorEl, setAnchorEl] = useState(null);
 
   return (
     <>
@@ -197,12 +165,12 @@ const Header = props => {
                       
                     }
                   </Grid>
-                  <Grid item xs={6} className={"g-70"}>
+                  <Grid item xs={6} className={"g-70"} style={{textAlign: "end"}}>
                       {isLogin && authUser && (
                         <Button
                           variant="contained"
                           color="secondary"
-                          style={{textAlign: "end"}}
+                          
                           onClick={() => {
                              dispatch(logout());
                           }}

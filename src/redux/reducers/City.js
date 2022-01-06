@@ -19,45 +19,64 @@ const initialCityState = {
 const city = (state = initialCityState, action) => {
   switch (action.type) {
     case GET_ALL_CITIES_SUCCESS: {
-      console.log("from reducer all cities ",action.payload)
       return {
         ...state,
         allCitiesData: action.payload
       };
     }
     case GET_CITIES_OF_COUNTRY_SUCCESS: {
-      console.log("from reducer all cities of country ",action.payload)
       return {
         ...state,
         citiesOfCountryData: action.payload
       };
     }
     case GET_CITY_BY_ID_SUCCESS: {
-      console.log("from reducer city by Id ",action.payload)
+
       return {
         ...state,
         cityByIdData: action.payload
       };
     }
     case ADD_CITY_SUCCESS: {
-      console.log("from reducer add city ",action.payload)
+      let citiesCountryArr=[...state.citiesOfCountryData]
+      citiesCountryArr.push(action.payload)
+      let cityArr=[...state.allCitiesData]
+      cityArr.push(action.payload)
       return {
         ...state,
-        cityAdded: action.payload
+        cityAdded: action.payload,
+        allCitiesData:cityArr,
+        citiesOfCountryData:citiesCountryArr
       };
     }
     case EDIT_CITY_SUCCESS: {
-      console.log("from reducer edit city",action.payload)
+
+      let cityArr=[...state.allCitiesData]
+      for (let i = 0; i < cityArr.length; i++) {
+          if (cityArr[i].id ===action.payload.id ) {
+              cityArr[i].name=action.payload.name
+              break;
+          }
+      }
+
       return {
         ...state,
+        allCitiesData:cityArr,
         cityEdited: action.payload
       };
     }
     case DELETE_CITY_SUCCESS: {
-      console.log("from reducer delete city",action.payload)
+      let cityArr=[...state.allCitiesData]
+        for (let i = 0; i < cityArr.length; i++) {
+            if (cityArr[i].id ===action.payload.id ) {
+              cityArr.splice(i, 1);
+              break;
+            }
+        }
       return {
         ...state,
-        cityDeleted: action.payload
+        cityDeleted: action.payload,
+        allCitiesData:cityArr
       };
     }
     default:

@@ -27,7 +27,6 @@ const country = (state = initialCountryState, action) => {
         };
       }
       case GET_COUNTRY_BY_ID_SUCCESS: {
-        console.log("from reducer country by Id ",action.payload)
         return {
           ...state,
           countryByIdData: action.payload
@@ -48,6 +47,7 @@ const country = (state = initialCountryState, action) => {
         for (let i = 0; i < countryArr.length; i++) {
             if (countryArr[i].id ===action.payload.id ) {
                 countryArr[i].name=action.payload.name
+                break;
             }
         }
       
@@ -62,6 +62,7 @@ const country = (state = initialCountryState, action) => {
         for (let i = 0; i < countryArr.length; i++) {
             if (countryArr[i].id ===action.payload.id ) {
                 countryArr.splice(i, 1);
+                break;
             }
         }
        

@@ -36,7 +36,7 @@ let callAxios = options => {
         resolve(response);
       }
     } catch (error) {
-      resolve({ data: { message: error.response.data.message } });
+      resolve({ data: { message: error.message } });
     }
   }).catch(err => {
     console.log(err);

@@ -56,8 +56,6 @@ const deleteCountryRequest = async (countryId) =>
 
 ///////////////
 function* requestGetAllCountries() {
-  console.log("requestGetAllCountries from saga ")
-
   try {
     const returnedData = yield call(getAllCountriesRequest);
     if (returnedData.message) {
@@ -71,7 +69,6 @@ function* requestGetAllCountries() {
 }
 
 function* requestGetCountryById({ payload }) {
-  console.log("requestGetCountryById from saga ",payload)
   try {
     const returnedData = yield call(getCountryByIdRequest,payload);
     if (returnedData.message) {
@@ -85,7 +82,6 @@ function* requestGetCountryById({ payload }) {
 }
 
 function* requestAddCountry({ payload }) {
-  console.log("requestAddCountry from saga ",payload)
   try {
     const returnedData = yield call(addCountryRequest,payload);
     if (returnedData.message) {
@@ -99,7 +95,6 @@ function* requestAddCountry({ payload }) {
 }
 
 function* requestEditCountry({ payload }) {
-  console.log("requestEditCountry from saga ",payload)
   const {countryId,countryNewName}=payload
   try {
     const returnedData = yield call(editCountryRequest,countryId,countryNewName);
@@ -114,7 +109,6 @@ function* requestEditCountry({ payload }) {
 }
 
 function* requestDeleteCountry({ payload }) {
-  console.log("requestDeleteCountry from saga ",payload)
   try {
     const returnedData = yield call(deleteCountryRequest,payload);
     if (returnedData.message) {

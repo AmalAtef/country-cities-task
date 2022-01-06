@@ -18,8 +18,6 @@ const loginRequest = async (email, password) =>
 function* requestLogin({ payload }) {
   const { email, password } = payload;
 
-  console.log("login from saga ",email, password)
-
   try {
     const returnedData = yield call(loginRequest, email, password);
     if (returnedData.message) {

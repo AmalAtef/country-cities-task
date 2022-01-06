@@ -21,10 +21,18 @@ import {
     openAddEdit
 } from "../../redux/actions/Country";
 
+import {addCity,editCity} from  "../../redux/actions/City";
+
 
 import Typography from "@material-ui/core/Typography";
 
 import TextField from '@material-ui/core/TextField';
+
+import AddIcon from '@material-ui/icons/Add';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,49 +71,38 @@ const useStyles = makeStyles(theme => ({
 
 export default function AddEditForm({
     modalFlag,
-    country
+    country,
+    city
 }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const allCountriesData = useSelector(
+    state => state.country.allCountriesData
+  );
   const OpenAddEdit = useSelector(state => state.country.openAddEdit);
-  ////// modal
-  const [open, setOpen] = useState(false);
+
+  const citiesOfCountryData=useSelector(state => state.city.citiesOfCountryData);
+
+  const [btnAddState,setBtnAddState]= useState(false);
+  
 
   const [countryName, setCountryName] = useState("");
+  const [countryId, setCountryId] = useState("");
+  const [cityName, setCityName] = useState("");
 
   useEffect(() => {
-    handleOpen();
-    if(modalFlag=="edit" && country){
+    if(modalFlag==="edit" && country){
         setCountryName(country.name)
     }
+    else if(modalFlag==="editCity"&&city){
+        setCityName(city.name)
+    }
   }, []);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
-    setOpen(false);
     dispatch(openAddEdit(false))
   };
-
-  const StyledFormControl = styled(FormControl)({
-    formControl: {
-      margin: 2,
-      "& select": {
-        paddingRight: "22px"
-      }
-    },
-    selectEmpty: {
-      marginTop: 0
-    }
-  });
-
-  useEffect(() => {
-
-  }, []);
-
 
   return (
     <>
@@ -144,8 +141,11 @@ export default function AddEditForm({
                                  dispatch(editCountry(country.id,countryName))
                              }else{
                                 dispatch(addCountry(countryName))
+
                              }
+                             setCountryName("")
                              handleClose()
+                             
                           }}
                         >
                          Submit
@@ -153,11 +153,125 @@ export default function AddEditForm({
               </Grid>          
           </Grid>
           }
-          {modalFlag=="view" &&  
+            <Grid container spacing={2}>
+          {modalFlag=="view" && 
+          <>
+          <Grid item xs={12}>
                 <Typography variant="h5" component="p">
                 {country.name}
                 </Typography>
-           }
+           </Grid>   
+              {/* add new city */}
+              <Grid item xs={12} style={{textAlign:"end"}}>
+                   <Button
+                          variant="contained"
+                          color="secondary"
+                          onClick={() => {
+                            setBtnAddState(true)
+                          }}
+                        >
+                         Add New City <AddIcon/>
+                   </Button>
+                        </Grid> 
+                        </>
+             }
+                {/* add city form */}
+                {((btnAddState&&modalFlag=="view")||modalFlag==="editCity"||modalFlag==="addCity") &&
+                <Grid container spacing={4}  justifyContent="center">
+                {modalFlag==="addCity"&& 
+                <Grid item xs={12}>
+                                            <FormControl variant="standard" style={{width: "20%"}}>
+                                    <InputLabel id="demo-simple-select-standard-label">Select Country</InputLabel>
+                                    <Select
+                                    labelId="demo-simple-select-standard-label"
+                                    id="demo-simple-select-standard"
+                                    value={countryId}
+                                    onChange={(event)=>{
+                                        setCountryId(event.target.value)
+                                    }}
+                                    label="Country"
+                                    >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    {allCountriesData.map((country, index) => (
+                                    <MenuItem value={country.id} key={country.id}  >{country.name}</MenuItem>
+                                    ))}
+                                    </Select>
+                                </FormControl>
+                        </Grid>
+                }
+                        <Grid item xs={12}>
+                            <TextField
+                            required
+                            id="outlined-required"
+                            label="City Name"
+                            defaultValue={cityName}
+                            onChange={(event)=>{setCityName(event.target.value)}}
+                        />
+                        </Grid>
+                        <Grid item xs={5}>
+                                <Button
+                                        variant="contained"
+                                        color="secondary"
+                                        onClick={() => {
+                                            if(modalFlag==="editCity"){
+                                                dispatch(editCity(city.id,cityName,city.countryId))
+                                                handleClose()
+                                            }else if(modalFlag==="addCity"){
+                                                setCountryId("")
+                                                dispatch(addCity(cityName,countryId))
+                                                handleClose()
+                                            }
+                                            else{
+
+                                                dispatch(addCity(cityName,country.id))
+                                            }
+                                            setCityName("")
+                                            setBtnAddState(false)
+                                           
+                                        }}
+                                        >
+                                        Submit
+                                </Button>
+                            </Grid>      
+                            <Grid item xs={5}>
+                                <Button
+                                        variant="contained"
+                                        color="secondary"
+                                        onClick={() => {
+                                            if(modalFlag==="editCity"||modalFlag==="addCity"){
+                                                handleClose()
+                                            }
+                                            setCityName("")
+                                            setBtnAddState(false)
+                                        }}
+                                        >
+                                        Cancel
+                                </Button>
+                            </Grid>          
+                        </Grid>
+                      }
+
+              {/* //////////////// */}
+              {modalFlag=="view" &&  
+              <>
+              <Grid item xs={12}>
+                 <Typography variant="h6" component="p">
+                 Cities of country
+                 </Typography>
+                 </Grid>
+                 <Grid item xs={12}>
+                  {citiesOfCountryData.map((city, index) => (
+                        <Typography variant="h6" component="p" key={city.id}>
+                        {city.name}
+                        </Typography>
+                  ))}
+                  </Grid>
+                  </>
+                }
+          </Grid>
+           
           </div>
         </Fade>
       </Modal>

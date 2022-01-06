@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { makeStyles} from "@material-ui/core/styles";
-
-import MenuIcon from "@material-ui/icons/Menu";
 import Grid from "@material-ui/core/Grid";
 
-import { getCookie } from "../util/session";
-import base64url from "base64url";
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -20,14 +15,14 @@ import AddIcon from '@material-ui/icons/Add';
 
 import AddEditForm from "./modals/AddEditForm"
 
+import {hideMessage} from "../redux/actions/Auth"
 import {
   getAllCountries,
-  getCountryById,
-  addCountry,
-  editCountry,
   deleteCountry,
   openAddEdit
 } from "../redux/actions/Country";
+
+import {getCitiesOfCountry}from "../redux/actions/City"
 
 import {
   NotificationContainer,
@@ -46,17 +41,22 @@ const Countries = props => {
     state => state.country.openAddEdit
   );
 
+  const showMessage = useSelector(state => state.auth.showMessage);
+  const alertMessage = useSelector(state => state.auth.alertMessage);
   const [clickedCountry, setClickedCountry] = useState(null);
 
   const [btnState, setBtnState] = useState(null);
 
   useEffect(() => {
    dispatch(getAllCountries())
-  // dispatch(getCountryById("424"))
-  //dispatch(addCountry("France"))
-  //  dispatch(editCountry(424,"France"))
-  // dispatch(deleteCountry("424"))
   }, []);
+
+  useEffect(() => {
+    if (showMessage) {
+      NotificationManager.error(alertMessage);
+      dispatch(hideMessage());
+    }
+  }, [showMessage]);
 
 
   return (
@@ -64,7 +64,7 @@ const Countries = props => {
     <Grid container spacing={4}
   justifyContent="flex-end"
   alignItems="end">
-    <Grid item xs={4}>
+    <Grid item xs={8} style={{textAlign:"end"}}>
                    <Button
                           variant="contained"
                           color="secondary"
@@ -83,7 +83,7 @@ const Countries = props => {
 
 
     {allCountriesData.map((country, index) => (
-      <Grid item xs={3}  key={country.id}>
+      <Grid item xs={3}  key={country.id} className="card-container">
        <Card>
       <CardContent>
         <Typography variant="h5" component="p">
@@ -107,7 +107,9 @@ const Countries = props => {
         <Button size="small" onClick={() => {
                    setBtnState("view")
                    setClickedCountry(country)
+                   dispatch(getCitiesOfCountry(country.id))
                    dispatch(openAddEdit(true))
+
                   }}>More Details</Button>
       </CardActions>
     </Card>
