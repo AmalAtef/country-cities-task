@@ -127,7 +127,7 @@ const Header = props => {
          <HideOnScroll {...props}>
             <AppBar>
               <Toolbar className={classes.bar}>
-                <Grid container>
+                <Grid container spacing={2}>
                   <Grid item xs={6} className={"g-30"}>
                     {isMobile ? (
                       <>
@@ -202,6 +202,7 @@ const Header = props => {
                         <Button
                           variant="contained"
                           color="secondary"
+                          style={{textAlign: "end"}}
                           onClick={() => {
                              dispatch(logout());
                           }}

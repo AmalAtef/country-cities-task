@@ -47,3 +47,6 @@ export const EDIT_CITY_SUCCESS="edit_city_success";
 export const DELETE_CITY="delete_city";
 export const DELETE_CITY_SUCCESS="delete_city_success";
 
+
+export const OPEN_ADD_EDIT_MODAL="open_add_edit_modal"
+

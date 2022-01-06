@@ -8,8 +8,8 @@ import {
     DELETE_COUNTRY,
     DELETE_COUNTRY_SUCCESS,
     EDIT_COUNTRY,
-    EDIT_COUNTRY_SUCCESS
-  
+    EDIT_COUNTRY_SUCCESS,
+    OPEN_ADD_EDIT_MODAL
 } from "../ActionTypes";
 
 
@@ -96,3 +96,10 @@ export const getAllCountries = () => {
       payload: returnedData 
     };
   };
+
+  export const openAddEdit=(flag)=>{
+return{
+    type:OPEN_ADD_EDIT_MODAL,
+    payload:flag
+}
+  }
