@@ -27,7 +27,7 @@ const Countries = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllCountries())
+   // dispatch(getAllCountries())
   // dispatch(getCountryById("424"))
   //dispatch(addCountry("France"))
   //  dispatch(editCountry(424,"France"))

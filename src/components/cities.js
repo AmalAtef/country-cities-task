@@ -10,7 +10,13 @@ import base64url from "base64url";
 
 
 import {
-} from "../redux/actions/Auth";
+  getAllCities,
+  getCityById,
+  getCitiesOfCountry,
+  addCity,
+  editCity,
+  deleteCity
+} from "../redux/actions/City";
 
 import {
   NotificationContainer,
@@ -22,6 +28,13 @@ const Cities = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // dispatch(getAllCities())
+    //  dispatch(getCityById(430))
+    //  dispatch(getCitiesOfCountry("423"))
+    // dispatch(addCity("cairo",423))
+    // dispatch(editCity(430,"fayoum",423))
+    //dispatch(deleteCity(430))
+    
   }, []);
 
 
